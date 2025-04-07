@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useState, useEffect } from "react"
-import { Menu, X, ChevronDown, Moon, Sun } from "lucide-react"
+import { Menu, X, ChevronDown, Moon, Sun } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { motion, AnimatePresence } from "framer-motion"
 
@@ -121,9 +121,7 @@ export default function Navbar({ darkMode, setDarkMode, activeSection, scrollToS
                                 setDropdownOpen("")
                               }}
                               className={`w-full text-left px-4 py-2 text-sm hover:bg-pro-cream dark:hover:bg-pro-blue/20 ${
-                                activeSection === "publications"
-                                  ? "text-pro-gold bg-pro-cream/50 dark:bg-pro-blue/10"
-                                  : ""
+                                activeSection === "publications" ? "text-pro-gold bg-pro-cream/50 dark:bg-pro-blue/10" : ""
                               }`}
                             >
                               Publications

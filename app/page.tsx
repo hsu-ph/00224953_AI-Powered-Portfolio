@@ -19,6 +19,8 @@ import EducationCard from "@/components/education-card"
 import ResearchInterestCard from "@/components/research-interest-card"
 import ContactMethodCard from "@/components/contact-method-card"
 import StatCard from "@/components/stat-card"
+import LookingForSection from "@/components/looking-for-section"
+import PublicationsSection from "@/components/publications-section"
 import Footer from "@/components/footer"
 
 // Import data
@@ -154,6 +156,9 @@ export default function Portfolio() {
               </div>
             </SectionContainer>
 
+            {/* Looking For Section */}
+            <LookingForSection />
+
             {/* Skills Section */}
             <SectionContainer id="skills" background="white">
               <SectionTitle
@@ -246,6 +251,9 @@ export default function Portfolio() {
                 ))}
               </div>
             </SectionContainer>
+
+            {/* Publications Section */}
+            <PublicationsSection />
 
             {/* Experience Section */}
             <SectionContainer id="experience" background="white">

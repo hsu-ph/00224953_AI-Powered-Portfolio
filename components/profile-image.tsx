@@ -1,8 +1,8 @@
 "use client"
 
-import Image from "next/image"
 import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
+import Image from "next/image"
 
 interface ProfileImageProps {
   src: string
@@ -27,17 +27,26 @@ export default function ProfileImage({ src, alt, size = "md", className, animate
   }
 
   const imageComponent = (
-    <div className={cn("relative rounded-full overflow-hidden", getSizeClasses(), className)}>
+    <div className={cn("relative", getSizeClasses(), className)}>
+      {/* Background glow effect */}
       <div className="absolute inset-0 rounded-full bg-pro-blue opacity-20"></div>
-      <div className="relative rounded-full overflow-hidden border-4 border-white dark:border-pro-charcoal shadow-xl">
-        <Image
-          src={src || "/placeholder.svg"}
-          alt={alt}
-          width={320}
-          height={320}
-          className="object-cover w-full h-full"
-          priority
-        />
+
+      {/* Image container with border */}
+      <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white dark:border-pro-charcoal shadow-xl">
+        <div className="absolute inset-0">
+          <Image
+            src={src || "/placeholder.svg"}
+            alt={alt}
+            fill
+            sizes="(max-width: 768px) 192px, 224px"
+            className="object-cover"
+            priority
+            style={{
+              objectFit: "cover",
+              objectPosition: "center 30%", // Adjust this value to center the face
+            }}
+          />
+        </div>
       </div>
     </div>
   )

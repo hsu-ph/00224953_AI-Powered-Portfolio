@@ -3,7 +3,7 @@ import { ArrowRight, ChevronDown, Moon, Sun } from "lucide-react"
 import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 import { CustomButton } from "@/components/ui/custom-button"
-import ProfileImage from "@/components/profile-image"
+import AvatarImage from "@/components/avatar-image"
 import SocialLinks from "@/components/social-links"
 
 interface HeroSectionProps {
@@ -33,7 +33,14 @@ export default function HeroSection({ darkMode, setDarkMode, onStart }: HeroSect
 
       <div className="container mx-auto px-4 flex flex-col items-center text-center z-10 max-w-md">
         {/* Profile photo */}
-        <ProfileImage src="/images/profile.jpeg" alt="Pei-Han Hsu" size="md" />
+        <div className="mb-8">
+          <AvatarImage
+            src="/images/profile.jpeg"
+            alt="Pei-Han Hsu"
+            size={224}
+            borderColor={darkMode ? "#2e3131" : "white"}
+          />
+        </div>
 
         <motion.div
           className="space-y-4"
