@@ -31,10 +31,11 @@ export default function EducationCard({
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
+      className="shadow-md"
     >
       <div className="flex items-start justify-between gap-4 mb-4">
         <div className="flex items-center gap-4">
-          <div className="bg-pro-blue/20 dark:bg-pro-blue/10 p-3 rounded-lg">
+          <div className="bg-teal/20 p-3 rounded-lg">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -45,7 +46,7 @@ export default function EducationCard({
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="text-pro-blue dark:text-pro-blue"
+              className="text-teal"
             >
               <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" />
             </svg>
@@ -53,7 +54,7 @@ export default function EducationCard({
 
           <div>
             <h3 className="text-xl font-bold">{institution}</h3>
-            <p className="text-pro-blue dark:text-pro-blue">{location}</p>
+            <p className="text-teal">{location}</p>
           </div>
         </div>
 
@@ -70,22 +71,28 @@ export default function EducationCard({
 
       <div className="mb-4">
         <p className="text-lg font-medium">{degree}</p>
-        <div className="flex justify-between text-pro-charcoal/60 dark:text-pro-cream/60">
+        <div className="flex justify-between text-gray-600 dark:text-gray-300">
           <span>{gpa}</span>
           <span>{period}</span>
         </div>
       </div>
 
       <div>
-        <p className="font-medium mb-2">Relevant Coursework:</p>
-        <div className="flex flex-wrap gap-2">
+        <p className="font-medium mb-3">Relevant Coursework:</p>
+        <div className="grid grid-cols-2 gap-2">
           {courses.map((course, courseIndex) => (
-            <span
+            <div
               key={courseIndex}
-              className="bg-pro-blue/20 dark:bg-pro-blue/10 text-pro-blue dark:text-pro-blue text-xs px-3 py-1.5 rounded-full"
+              className={`${
+                courseIndex % 3 === 0
+                  ? "bg-blue/10 text-blue dark:bg-blue/20"
+                  : courseIndex % 3 === 1
+                    ? "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200"
+                    : "bg-purple-100 text-purple-800 dark:bg-purple-900/20 dark:text-purple-300"
+              } text-xs px-3 py-2.5 rounded-md`}
             >
               {course}
-            </span>
+            </div>
           ))}
         </div>
       </div>

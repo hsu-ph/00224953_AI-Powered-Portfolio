@@ -37,6 +37,7 @@ export default function Navbar({ darkMode, setDarkMode, activeSection, scrollToS
     return () => document.removeEventListener("click", handleClickOutside)
   }, [])
 
+  // Update the sections array to include the blog section
   const sections = [
     { id: "about", label: "About" },
     { id: "looking-for", label: "Looking For" },
@@ -51,6 +52,7 @@ export default function Navbar({ darkMode, setDarkMode, activeSection, scrollToS
       label: "Experience",
       dropdown: ["experience", "projects"],
     },
+    { id: "blog", label: "Blog" },
     { id: "contact", label: "Contact" },
   ]
 

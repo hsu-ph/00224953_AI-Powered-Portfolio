@@ -53,13 +53,11 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Professional palette
-        pro: {
-          gold: "#f8b831",
-          blue: "#416d85",
-          cream: "#f6f0e3",
-          charcoal: "#2e3131",
-        },
+        // Minty Ocean palette
+        teal: "#217C7E",
+        cream: "#F3EFE0",
+        blue: "#3399FF",
+        burgundy: "#9A3334",
       },
       borderRadius: {
         lg: "var(--radius)",

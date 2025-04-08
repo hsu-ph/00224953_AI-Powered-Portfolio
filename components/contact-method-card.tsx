@@ -12,22 +12,22 @@ interface ContactMethodCardProps {
 export default function ContactMethodCard({ title, icon, value, link, description }: ContactMethodCardProps) {
   return (
     <CardContainer
-      variant="filled"
+      variant="default"
       padding="lg"
       initial={{ opacity: 0, scale: 0.8 }}
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{ type: "spring", stiffness: 100 }}
       viewport={{ once: true }}
       whileHover={{ y: -10 }}
-      className="text-center"
+      className="text-center shadow-md"
     >
-      <div className="w-16 h-16 mx-auto bg-pro-blue rounded-full flex items-center justify-center mb-6">{icon}</div>
+      <div className="w-16 h-16 mx-auto bg-teal rounded-full flex items-center justify-center mb-6">{icon}</div>
 
-      <h3 className="text-xl font-bold mb-2">{title}</h3>
-      <a href={link} className="text-pro-blue dark:text-pro-gold hover:underline" target="_blank" rel="noreferrer">
+      <h3 className="text-xl font-bold mb-2 text-teal">{title}</h3>
+      <a href={link} className="text-teal hover:underline" target="_blank" rel="noreferrer">
         {value}
       </a>
-      <p className="text-sm text-pro-charcoal/60 dark:text-pro-cream/60 mt-2">{description}</p>
+      <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">{description}</p>
     </CardContainer>
   )
 }

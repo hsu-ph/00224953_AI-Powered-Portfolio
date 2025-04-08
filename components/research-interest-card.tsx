@@ -18,13 +18,14 @@ export default function ResearchInterestCard({ title, icon, description }: Resea
       viewport={{ once: true }}
       style={{ transformStyle: "preserve-3d" }}
       whileHover={{ y: -5 }}
+      className="shadow-md"
     >
       <div className="flex items-start gap-4">
-        <div className="bg-pro-blue p-3 rounded-lg shrink-0">{icon}</div>
+        <div className="bg-teal p-3 rounded-lg shrink-0">{icon}</div>
 
         <div>
-          <h3 className="text-xl font-bold mb-3">{title}</h3>
-          <p className="text-pro-charcoal/80 dark:text-pro-cream/80 leading-relaxed">{description}</p>
+          <h3 className="text-xl font-bold mb-3 text-teal">{title}</h3>
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{description}</p>
         </div>
       </div>
     </CardContainer>

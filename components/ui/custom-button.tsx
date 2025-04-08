@@ -4,7 +4,7 @@ import type { ReactNode } from "react"
 import { Button as ShadcnButton } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
-type ButtonVariant = "primary" | "secondary" | "outline" | "ghost"
+type ButtonVariant = "primary" | "secondary" | "outline" | "ghost" | "teal" | "blue" | "burgundy"
 type ButtonSize = "sm" | "md" | "lg"
 
 interface CustomButtonProps {
@@ -33,15 +33,21 @@ export function CustomButton({
   const getVariantClasses = () => {
     switch (variant) {
       case "primary":
-        return "bg-pro-gold hover:bg-pro-gold/90 text-white"
+        return "bg-teal hover:bg-teal/90 text-white"
       case "secondary":
-        return "bg-pro-blue hover:bg-pro-blue/90 text-white"
+        return "bg-blue hover:bg-blue/90 text-white"
       case "outline":
-        return "border-pro-blue text-pro-blue hover:bg-pro-blue/10 border"
+        return "border-teal text-teal hover:bg-teal/10 border"
       case "ghost":
-        return "text-pro-blue hover:bg-pro-blue/10"
+        return "text-teal hover:bg-teal/10"
+      case "teal":
+        return "bg-teal hover:bg-teal/90 text-white"
+      case "blue":
+        return "bg-blue hover:bg-blue/90 text-white"
+      case "burgundy":
+        return "bg-burgundy hover:bg-burgundy/90 text-white"
       default:
-        return "bg-pro-gold hover:bg-pro-gold/90 text-white"
+        return "bg-teal hover:bg-teal/90 text-white"
     }
   }
 

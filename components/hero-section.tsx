@@ -17,7 +17,7 @@ export default function HeroSection({ darkMode, setDarkMode, onStart }: HeroSect
     <div
       className={cn(
         "min-h-screen flex flex-col items-center justify-center relative overflow-hidden",
-        darkMode ? "bg-pro-charcoal text-pro-cream" : "bg-pro-cream text-pro-charcoal",
+        darkMode ? "bg-gray-900 text-white" : "bg-cream text-gray-800",
       )}
     >
       {/* Theme toggle */}
@@ -38,7 +38,7 @@ export default function HeroSection({ darkMode, setDarkMode, onStart }: HeroSect
             src="/images/profile.jpeg"
             alt="Pei-Han Hsu"
             size={224}
-            borderColor={darkMode ? "#2e3131" : "white"}
+            borderColor={darkMode ? "#1f2937" : "white"}
           />
         </div>
 
@@ -49,10 +49,10 @@ export default function HeroSection({ darkMode, setDarkMode, onStart }: HeroSect
           transition={{ duration: 0.8, delay: 0.3 }}
         >
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
-            Pei-Han <span className="text-pro-blue">Hsu</span>
+            Pei-Han <span className="text-teal">Hsu</span>
           </h1>
 
-          <p className="text-xl text-pro-charcoal/80 dark:text-pro-cream/80 mb-8">Data Scientist & Software Engineer</p>
+          <p className="text-xl text-gray-700 dark:text-gray-300 mb-8">Data Scientist & Software Engineer</p>
         </motion.div>
 
         <motion.div
@@ -63,7 +63,7 @@ export default function HeroSection({ darkMode, setDarkMode, onStart }: HeroSect
           <CustomButton
             onClick={onStart}
             size="lg"
-            className="rounded-full px-8 py-6"
+            className="rounded-full px-8 py-6 bg-teal hover:bg-teal/90 text-white"
             icon={<ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />}
           >
             Explore My Work

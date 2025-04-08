@@ -5,24 +5,18 @@ interface SectionContainerProps {
   id: string
   children: ReactNode
   className?: string
-  background?: "white" | "cream" | "blue" | "gold" | "charcoal"
+  background?: "cream" | "light-blue"
 }
 
-export default function SectionContainer({ id, children, className, background = "white" }: SectionContainerProps) {
+export default function SectionContainer({ id, children, className, background = "cream" }: SectionContainerProps) {
   const getBackgroundClasses = () => {
     switch (background) {
-      case "white":
-        return "bg-white dark:bg-pro-charcoal"
       case "cream":
-        return "bg-pro-cream dark:bg-pro-charcoal/90"
-      case "blue":
-        return "bg-pro-blue/10 dark:bg-pro-blue/20"
-      case "gold":
-        return "bg-pro-gold/10 dark:bg-pro-gold/20"
-      case "charcoal":
-        return "bg-pro-charcoal/10 dark:bg-pro-charcoal"
+        return "bg-cream dark:bg-gray-900"
+      case "light-blue":
+        return "bg-blue/10 dark:bg-blue/20"
       default:
-        return "bg-white dark:bg-pro-charcoal"
+        return "bg-cream dark:bg-gray-900"
     }
   }
 

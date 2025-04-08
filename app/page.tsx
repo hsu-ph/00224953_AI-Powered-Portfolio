@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { cn } from "@/lib/utils"
 import { motion, AnimatePresence } from "framer-motion"
+import { Search, Briefcase, Handshake } from "lucide-react"
 
 // Import components
 import HeroSection from "@/components/hero-section"
@@ -19,9 +20,10 @@ import EducationCard from "@/components/education-card"
 import ResearchInterestCard from "@/components/research-interest-card"
 import ContactMethodCard from "@/components/contact-method-card"
 import StatCard from "@/components/stat-card"
-import LookingForSection from "@/components/looking-for-section"
-import PublicationsSection from "@/components/publications-section"
+import TimelineSection from "@/components/timeline-section"
 import Footer from "@/components/footer"
+import BlogSection from "@/components/blog-section"
+import PublicationsSection from "@/components/publications-section"
 
 // Import data
 import { skillCategories } from "../data/skills"
@@ -95,7 +97,7 @@ export default function Portfolio() {
       {pageTransition ? (
         <motion.div
           key="transition"
-          className="fixed inset-0 bg-pro-gold z-50"
+          className="fixed inset-0 bg-teal z-50"
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           exit={{ scaleX: 0 }}
@@ -105,10 +107,7 @@ export default function Portfolio() {
       ) : started ? (
         <motion.div
           key="main-content"
-          className={cn(
-            "min-h-screen",
-            darkMode ? "dark bg-pro-charcoal text-pro-cream" : "bg-white text-pro-charcoal",
-          )}
+          className={cn("min-h-screen", darkMode ? "dark bg-gray-900 text-white" : "bg-white text-gray-800")}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
@@ -121,7 +120,7 @@ export default function Portfolio() {
           />
 
           <main className="pt-20">
-            {/* About Section */}
+            {/* About Section - Cream */}
             <SectionContainer id="about" background="cream">
               <div className="max-w-3xl mx-auto">
                 <SectionTitle title="About Me" />
@@ -133,18 +132,20 @@ export default function Portfolio() {
                   transition={{ duration: 0.6 }}
                   viewport={{ once: true }}
                 >
-                  <h3 className="text-2xl md:text-3xl font-bold mb-6 text-pro-blue dark:text-pro-gold">
-                    Data Scientist & Software Engineer
-                  </h3>
+                  <h3 className="text-2xl md:text-3xl font-bold mb-6 text-teal">Data Scientist & Software Engineer</h3>
 
-                  <p className="text-lg text-pro-charcoal/80 dark:text-pro-cream/80 mb-6 leading-relaxed">
+                  <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
                     Information Systems graduate student specializing in data analytics, machine learning, and
                     AI-powered applications. Passionate about solving complex problems with data-driven solutions and
                     creating impactful technology.
                   </p>
 
                   <div className="flex flex-wrap gap-4 mt-8">
-                    <CustomButton onClick={() => scrollToSection("projects")} icon={<ArrowRight className="h-4 w-4" />}>
+                    <CustomButton
+                      onClick={() => scrollToSection("projects")}
+                      variant="teal"
+                      icon={<ArrowRight className="h-4 w-4" />}
+                    >
                       View Projects
                     </CustomButton>
 
@@ -156,11 +157,68 @@ export default function Portfolio() {
               </div>
             </SectionContainer>
 
-            {/* Looking For Section */}
-            <LookingForSection />
+            {/* Timeline Section - Light Blue */}
+            <SectionContainer id="timeline" background="light-blue">
+              <SectionTitle
+                title="Professional Journey"
+                description="A chronological overview of my academic and professional development."
+              />
 
-            {/* Skills Section */}
-            <SectionContainer id="skills" background="white">
+              <div className="timeline-container max-w-5xl mx-auto py-10">
+                <TimelineSection />
+              </div>
+            </SectionContainer>
+
+            {/* Looking For Section - Cream */}
+            <SectionContainer id="looking-for" background="cream">
+              <SectionTitle
+                title="What I'm Looking For"
+                description="Current opportunities I'm seeking and open to discussing"
+              />
+
+              <CardContainer
+                variant="default"
+                padding="lg"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+                className="max-w-3xl mx-auto shadow-md"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="bg-teal p-3 rounded-lg shrink-0">
+                    <Search className="h-6 w-6 text-white" />
+                  </div>
+
+                  <div>
+                    <h3 className="text-xl font-bold mb-4 text-teal">Open to Opportunities</h3>
+
+                    <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                      I'm currently looking for Summer 2025 internships in machine learning or AI product development.
+                      Open to collaborations in educational technology and NLP research.
+                    </p>
+
+                    <div className="grid md:grid-cols-2 gap-4 mt-6">
+                      <div className="flex items-center gap-3">
+                        <div className="bg-teal/20 p-2 rounded-full">
+                          <Briefcase className="h-5 w-5 text-teal" />
+                        </div>
+                        <span className="text-gray-700 dark:text-gray-300">Summer 2025 Internships</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="bg-teal/20 p-2 rounded-full">
+                          <Handshake className="h-5 w-5 text-teal" />
+                        </div>
+                        <span className="text-gray-700 dark:text-gray-300">Research Collaborations</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContainer>
+            </SectionContainer>
+
+            {/* Skills Section - Light Blue */}
+            <SectionContainer id="skills" background="light-blue">
               <SectionTitle
                 title="Technical Expertise"
                 description="Specialized in data analytics, machine learning, and software development."
@@ -174,15 +232,21 @@ export default function Portfolio() {
                 viewport={{ once: true }}
               >
                 {skillCategories.map((category, index) => (
-                  <SkillCard key={index} title={category.title} icon={category.icon} skills={category.skills} />
+                  <SkillCard
+                    key={index}
+                    title={category.title}
+                    icon={category.icon}
+                    skills={category.skills}
+                    colorScheme="teal"
+                  />
                 ))}
               </motion.div>
 
               <div className="grid md:grid-cols-2 gap-12 mt-16 items-center">
                 <div>
-                  <h3 className="text-2xl font-bold mb-4 text-pro-blue dark:text-pro-gold">Languages</h3>
+                  <h3 className="text-2xl font-bold mb-4 text-teal">Languages</h3>
 
-                  <p className="text-pro-charcoal/80 dark:text-pro-cream/80 mb-6">
+                  <p className="text-gray-700 dark:text-gray-300 mb-6">
                     Fluent in English and Mandarin Chinese, with strong technical communication skills for both
                     technical and non-technical audiences.
                   </p>
@@ -193,8 +257,8 @@ export default function Portfolio() {
                         <span className="text-sm font-medium">English</span>
                         <span className="text-sm font-medium">Fluent</span>
                       </div>
-                      <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
-                        <div className="bg-pro-blue dark:bg-pro-gold h-2 rounded-full" style={{ width: "95%" }}></div>
+                      <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                        <div className="bg-teal dark:bg-teal h-2 rounded-full" style={{ width: "95%" }}></div>
                       </div>
                     </div>
 
@@ -203,8 +267,8 @@ export default function Portfolio() {
                         <span className="text-sm font-medium">Mandarin Chinese</span>
                         <span className="text-sm font-medium">Native</span>
                       </div>
-                      <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
-                        <div className="bg-pro-blue dark:bg-pro-gold h-2 rounded-full" style={{ width: "100%" }}></div>
+                      <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                        <div className="bg-teal dark:bg-teal h-2 rounded-full" style={{ width: "100%" }}></div>
                       </div>
                     </div>
                   </div>
@@ -229,8 +293,8 @@ export default function Portfolio() {
               </div>
             </SectionContainer>
 
-            {/* Education Section */}
-            <SectionContainer id="education" background="blue">
+            {/* Education Section - Cream */}
+            <SectionContainer id="education" background="cream">
               <SectionTitle
                 title="Academic Background"
                 description="Strong foundation in Information Systems, Computer Science, and Data Analytics."
@@ -252,11 +316,18 @@ export default function Portfolio() {
               </div>
             </SectionContainer>
 
-            {/* Publications Section */}
-            <PublicationsSection />
+            {/* Publications Section - Light Blue */}
+            <SectionContainer id="publications" background="light-blue">
+              <SectionTitle
+                title="Publications"
+                description="Academic papers and research contributions in machine learning and healthcare."
+              />
 
-            {/* Experience Section */}
-            <SectionContainer id="experience" background="white">
+              <PublicationsSection />
+            </SectionContainer>
+
+            {/* Experience Section - Cream */}
+            <SectionContainer id="experience" background="cream">
               <SectionTitle
                 title="Work Experience"
                 description="Professional experience in research, data analytics, and software engineering."
@@ -276,8 +347,8 @@ export default function Portfolio() {
               </div>
             </SectionContainer>
 
-            {/* Research Interests Section */}
-            <SectionContainer id="research" background="charcoal">
+            {/* Research Interests Section - Light Blue */}
+            <SectionContainer id="research" background="light-blue">
               <SectionTitle
                 title="Research Interests"
                 description="Areas where I'm actively exploring, learning, and contributing."
@@ -301,8 +372,8 @@ export default function Portfolio() {
               </motion.div>
             </SectionContainer>
 
-            {/* Projects Section */}
-            <SectionContainer id="projects" background="gold">
+            {/* Projects Section - Cream */}
+            <SectionContainer id="projects" background="cream">
               <SectionTitle
                 title="Featured Projects"
                 description="A selection of my technical work showcasing expertise in various domains and technologies."
@@ -336,8 +407,18 @@ export default function Portfolio() {
               </div>
             </SectionContainer>
 
-            {/* Contact Section */}
-            <SectionContainer id="contact" background="white">
+            {/* Blog Section - Light Blue */}
+            <SectionContainer id="blog" background="light-blue">
+              <SectionTitle
+                title="Blog"
+                description="Thoughts, stories, and insights from my journey in tech and life."
+              />
+
+              <BlogSection />
+            </SectionContainer>
+
+            {/* Contact Section - Cream */}
+            <SectionContainer id="contact" background="cream">
               <SectionTitle
                 title="Let's Connect"
                 description="I'm always open to discussing new projects, opportunities, and collaborations."
